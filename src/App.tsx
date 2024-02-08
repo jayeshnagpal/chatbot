@@ -1,5 +1,5 @@
 import './App.css'
-import ChatScreen from './components/chatScreen'
+import ChatScreen from './chatScreen/chatScreen'
 
 function App() { 
   return (

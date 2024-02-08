@@ -1,0 +1,59 @@
+/* ChatScreen.css */
+
+
+.chat-screen {
+  width: 100%; /* Set the width of the chat screen */
+  max-width: 500px; /* Optional: set a maximum width */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff; /* White background */
+}
+
+.messages {
+  padding: 16px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.sent,
+.received {
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  max-width: 90%; /* Set the maximum width of the message background */
+}
+
+.sent {
+  background-color: #757575; /* Dark gray for sent messages */
+  color: #fff;
+  align-self: flex-end;
+}
+
+.received {
+  background-color: #e0e0e0; /* Light gray for received messages */
+  color: #000;
+  align-self: flex-start;
+}
+
+.input-container {
+  display: flex;
+  padding: 8px;
+}
+
+input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+button {
+  background-color: #757575; /* Dark gray for the button */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: pointer;
+}

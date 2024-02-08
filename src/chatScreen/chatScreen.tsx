@@ -5,7 +5,7 @@ import './ChatScreen.css';
 
 
 interface Message {
-  type: 'system'|"user";
+  type: 'system'|"user"; 
   text: string;
 }
 
