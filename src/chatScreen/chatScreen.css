@@ -3,7 +3,6 @@
 
 .chat-screen {
   width: 100%; /* Set the width of the chat screen */
-  max-width: 500px; /* Optional: set a maximum width */
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -56,4 +55,24 @@ button {
   border-radius: 4px;
   padding: 8px;
   cursor: pointer;
+}
+
+.feedback-option {
+  font-size: 12px; /* Small font size for feedback option */
+  color: #757575; /* Dark gray color for feedback option */
+  cursor: pointer;
+  margin-left: 5px; /* Adjust margin as needed */
+}
+
+.feedback {
+  font-size: 12px; /* Small font size for feedback emoji */
+  margin-left: 5px; /* Adjust margin as needed */
+}
+
+.positive {
+  color: #4caf50; /* Green color for positive feedback emoji */
+}
+
+.negative {
+  color: #e53935; /* Red color for negative feedback emoji */
 }

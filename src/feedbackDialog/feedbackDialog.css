@@ -1,0 +1,45 @@
+/* FeedbackDialog.css */
+
+.feedback-dialog {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    width: 200px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feedback-dialog p {
+    margin-bottom: 10px;
+  }
+  
+  .feedback-dialog button {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 8px;
+  }
+  
+  .feedback-dialog button:hover {
+    opacity: 0.8;
+  }
+  
+  .feedback-dialog button.submit {
+    background-color: #1565c0; /* Blue color for submit button */
+    color: #fff;
+  }
+  
+  .feedback-dialog button.cancel {
+    background-color: #d32f2f; /* Red color for cancel button */
+    color: #fff;
+  }
+  
+  .feedback-dialog div {
+    margin-bottom: 10px;
+  }
+  
