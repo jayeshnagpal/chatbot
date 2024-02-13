@@ -2,8 +2,6 @@
 
 import React, { useState, KeyboardEvent, useEffect } from 'react';
 import './ChatScreen.css';
-import FeedbackDialog from '../feedbackDialog/feedbackDialog';
-
 
 type Message = {
   type: 'system' | "user";
@@ -53,16 +51,12 @@ const fetchBotResponse = async (newMessage: string): Promise<Message> => {
 
 };
 
-const sendFeedbackToServer = (messageIndex: number, isPositive: boolean) => {
-  // Simulate sending feedback to the server
-  console.log(`Sending feedback to the server for message index ${messageIndex}: ${isPositive ? 'Positive' : 'Negative'}`);
-};
+
+
 
 const ChatScreen: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState<string>('');
-  const [showFeedbackDialog, setShowFeedbackDialog] = useState<boolean>(false);
-  const [feedbackMessageIndex, setFeedbackMessageIndex] = useState<number | null>(null);
 
 
   useEffect(() => {
@@ -90,11 +84,16 @@ const ChatScreen: React.FC = () => {
     }
   };
 
-  const handleFeedbackOptionClick = (messageIndex: number) => {
-    // Show feedback options
-    setShowFeedbackDialog(true);
-    setFeedbackMessageIndex(messageIndex);
+  const handleCopyToClipboard = () => {
+    const textToCopy = messages[messages.length - 1]?.text || '';
+    navigator.clipboard.writeText(textToCopy);
+    console.log('Text copied to clipboard:', textToCopy);
   };
+
+  const sendFeedbackToServer = (messageIndex: number, isPositive: boolean) => {
+    console.log(`Sending feedback to the server for message index ${messageIndex}: ${isPositive ? 'Positive' : 'Negative'}`);
+  };
+
 
   return (
     <div className="chat-screen">
@@ -102,11 +101,18 @@ const ChatScreen: React.FC = () => {
         {messages.map((message, index) => (
           <div key={index} className={message.type == "user" ? 'sent' : 'received'}>
             {message.text}
-            {(message.type === "system" && index !== 0) && (<div>
-              <span className="feedback-option" onClick={() => handleFeedbackOptionClick(index)}>
-                ✋ Give Feedback
-              </span>
-            </div>)}
+            {(message.type === "system" && index !== 0) && (
+              <div>
+                <span className="clipboard-icon" onClick={handleCopyToClipboard}>
+                  📋
+                </span>
+                <span className="thumb-icon" onClick={() => sendFeedbackToServer(index, true)}>
+                  👍
+                </span>
+                <span className="thumb-icon" onClick={() => sendFeedbackToServer(index, false)}>
+                  👎
+                </span>
+              </div>)}
           </div>
         ))}
       </div>
@@ -121,9 +127,6 @@ const ChatScreen: React.FC = () => {
         />
         <button onClick={handleSendMessage}>Send</button>
       </div>
-      {showFeedbackDialog && feedbackMessageIndex !== null && (
-        <FeedbackDialog onClose={(isPositive) => sendFeedbackToServer(feedbackMessageIndex, isPositive)} />
-      )}
     </div>
   );
 };
